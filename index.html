@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NEXON DRIVE Motors — Venta de Autos de Última Generación</title>
+  <meta name="description" content="NEXON DRIVE Motors - Venta de autos nuevos, híbridos, eléctricos y usados certificados. Financiación, pruebas de manejo y atención personalizada.">
+  <link rel="stylesheet" href="our-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ============================
+       HEADER
+       ============================ -->
+  <header class="main-header" role="banner">
+    <div class="header-inner container">
+      <div class="brand">
+        <a href="#inicio" id="home-link" aria-label="Ir al inicio" class="brand-link">
+          <img src="https://picsum.photos/seed/logo/80/40" alt="Logo NEXON DRIVE Motors" class="brand-logo">
+          <span class="brand-name">NEXON DRIVE <strong>Motors</strong></span>
+        </a>
+      </div>
+
+      <div class="search-area" role="search" aria-label="Buscador global">
+        <input id="global-search" type="search" placeholder="Buscar modelo, año, precio, palabra clave..." aria-label="Buscar autos">
+        <button id="search-btn" class="btn btn-primary" aria-label="Buscar">Buscar</button>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#destacados">Destacados</a></li>
+          <li><a href="#usados">Usados</a></li>
+          <li><a href="#financiacion">Financiación</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions" aria-hidden="false">
+        <button id="favorites-btn" class="icon-btn" aria-label="Favoritos">❤ <span id="fav-count" class="badge">0</span></button>
+        <button id="compare-btn" class="icon-btn" aria-label="Comparar">≡ <span id="cmp-count" class="badge">0</span></button>
+        <button id="cart-btn" class="icon-btn" aria-label="Carrito">🛒 <span id="cart-count" class="badge">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================
+       HERO / CAROUSEL
+       ============================ -->
+  <section id="inicio" class="hero" aria-label="Sección principal">
+    <div class="hero-left container">
+      <h1>Conduce la innovación. Conduce <span>NEXON DRIVE</span></h1>
+      <p class="lead">Autos nuevos, híbridos, eléctricos y usados certificados — planes de financiación y entrega inmediata.</p>
+
+      <div class="hero-cta">
+        <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+        <a href="#financiacion" class="btn btn-secondary">Financiá tu auto</a>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-item">🔧 12 meses de garantía</div>
+        <div class="trust-item">✔️ Usados certificados</div>
+        <div class="trust-item">🌱 Cert. ambiental</div>
+      </div>
+    </div>
+
+    <div class="hero-right container">
+      <div class="carousel" aria-roledescription="carousel">
+        <div class="slide active" role="group" aria-label="Slide 1">
+          <img src="https://picsum.photos/id/111/1200/600" alt="Toyota GR Supra en color rojo vibrante">
+          <div class="slide-tag">Oferta: GR Supra — $69,990</div>
+        </div>
+        <div class="slide" role="group" aria-label="Slide 2">
+          <img src="https://picsum.photos/id/214/1200/600" alt="Toyota bZ4X, SUV eléctrico futurista en ciudad">
+          <div class="slide-tag">bZ4X EV — $42,500</div>
+        </div>
+        <div class="slide" role="group" aria-label="Slide 3">
+          <img src="https://picsum.photos/id/163/1200/600" alt="Toyota Corolla Cross, SUV híbrida en entorno natural">
+          <div class="slide-tag">Corolla Cross Hybrid — Financ. 0%</div>
+        </div>
+        <button class="carousel-prev" aria-label="Anterior">‹</button>
+        <button class="carousel-next" aria-label="Siguiente">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       FILTERS & SORT
+       ============================ -->
+  <section class="controls container" aria-label="Controles de catálogo">
+    <div class="filters" role="region" aria-label="Filtros">
+      <label>
+        <select id="filter-type" aria-label="Tipo de vehículo">
+          <option value="">Todos los tipos</option>
+          <option value="nuevo">Nuevo</option>
+          <option value="usado">Usado</option>
+          <option value="hibrido">Híbrido</option>
+          <option value="electrico">Eléctrico</option>
+        </select>
+      </label>
+
+      <label>
+        <select id="filter-brand" aria-label="Marca">
+          <option value="">Todas las marcas</option>
+          <option value="toyota">Toyota</option>
+          <option value="nexon">NEXON (concept)</option>
+        </select>
+      </label>
+
+      <label><input id="filter-price-min" type="number" placeholder="Precio min" aria-label="Precio mínimo"></label>
+      <label><input id="filter-price-max" type="number" placeholder="Precio max" aria-label="Precio máximo"></label>
+      <button id="apply-filters" class="btn btn-outline">Aplicar</button>
+      <button id="clear-filters" class="btn">Limpiar</button>
+    </div>
+
+    <div class="sort" role="region" aria-label="Ordenar resultados">
+      <label for="sort-select">Ordenar:</label>
+      <select id="sort-select" aria-label="Ordenar productos">
+        <option value="relevance">Relevancia</option>
+        <option value="price-asc">Precio: menor primero</option>
+        <option value="price-desc">Precio: mayor primero</option>
+        <option value="year-desc">Año: más nuevo</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ============================
+       CATALOG / PRODUCTS
+       ============================ -->
+  <main id="catalogo" class="catalog container" role="main" aria-label="Catálogo de vehículos">
+    <h2>Catálogo — Todos los vehículos</h2>
+
+    <div class="catalog-grid" id="catalog-grid">
+      <!-- ===== card: GR Supra (original content preserved) ===== -->
+      <article class="car-card" data-id="supra" data-brand="toyota" data-type="nuevo" data-price="69990" data-year="2023" aria-labelledby="title-supra">
+        <div class="card-media">
+          <!-- prefer local if exists, fallback to picsum -->
+          <img src="1.jpg" alt="Toyota GR Supra" onerror="this.src='https://picsum.photos/id/1011/800/500'">
+          <div class="badge badge-new">Nuevo</div>
+          <button class="quick-view" aria-label="Vista rápida Supra">🔍</button>
+        </div>
+        <div class="card-body">
+          <h3 id="title-supra">GR Supra</h3>
+          <p class="muted">Motor 3.0L Turbo • 345 CV</p>
+          <p class="price"><span class="old-price">$75,000</span> <strong>$69,990</strong></p>
+          <div class="card-actions">
+            <button class="btn add-cart">Agregar al carrito</button>
+            <button class="icon small fav" title="Agregar a favoritos">❤</button>
+            <button class="icon small compare" title="Agregar a comparar">≡</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== card: bZ4X EV ===== -->
+      <article class="car-card" data-id="bz4x" data-brand="toyota" data-type="electrico" data-price="42500" data-year="2024" aria-labelledby="title-bz4x">
+        <div class="card-media">
+          <img src="https://picsum.photos/id/214/800/500" alt="Toyota bZ4X EV">
+          <div class="badge badge-ev">Eléctrico</div>
+          <button class="quick-view" aria-label="Vista rápida bZ4X">🔍</button>
+        </div>
+        <div class="card-body">
+          <h3 id="title-bz4x">bZ4X EV</h3>
+          <p class="muted">Cero emisiones, autonomía extendida</p>
+          <p class="price"><strong>$42,500</strong></p>
+          <div class="card-actions">
+            <button class="btn add-cart">Agregar al carrito</button>
+            <button class="icon small fav" title="Agregar a favoritos">❤</button>
+            <button class="icon small compare" title="Agregar a comparar">≡</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== card: Corolla Cross Hybrid ===== -->
+      <article class="car-card" data-id="corollacross" data-brand="toyota" data-type="hibrido" data-price="38900" data-year="2024" aria-labelledby="title-corolla">
+        <div class="card-media">
+          <img src="3.png" alt="Corolla Cross Hybrid" onerror="this.src='https://picsum.photos/id/1032/800/500'">
+          <div class="badge badge-hybrid">Híbrido</div>
+          <button class="quick-view" aria-label="Vista rápida Corolla">🔍</button>
+        </div>
+        <div class="card-body">
+          <h3 id="title-corolla">Corolla Cross Hybrid</h3>
+          <p class="muted">Eficiencia y versatilidad</p>
+          <p class="price"><span class="old-price">$38,900</span> <strong>Financiación 0%</strong></p>
+          <div class="card-actions">
+            <button class="btn add-cart">Agregar al carrito</button>
+            <button class="icon small fav" title="Agregar a favoritos">❤</button>
+            <button class="icon small compare" title="Agregar a comparar">≡</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== card: Land Cruiser 300 (original preserved) ===== -->
+      <article class="car-card" data-id="landcruiser" data-brand="toyota" data-type="nuevo" data-price="85000" data-year="2023" aria-labelledby="title-land">
+        <div class="card-media">
+          <img src="4.jpg" alt="Land Cruiser 300" onerror="this.src='https://picsum.photos/id/1040/800/500'">
+          <div class="badge badge-premium">Premium</div>
+          <button class="quick-view" aria-label="Vista rápida Land Cruiser">🔍</button>
+        </div>
+        <div class="card-body">
+          <h3 id="title-land">Land Cruiser 300</h3>
+          <p class="muted">V6 Twin-Turbo • Tracción 4x4</p>
+          <p class="price"><strong>$85,000</strong></p>
+          <div class="card-actions">
+            <button class="btn add-cart">Agregar al carrito</button>
+            <button class="icon small fav" title="Agregar a favoritos">❤</button>
+            <button class="icon small compare" title="Agregar a comparar">≡</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== card: RAV4 usado certificado (extra) ===== -->
+      <article class="car-card" data-id="rav4used" data-brand="toyota" data-type="usado" data-price="25000" data-year="2020" aria-labelledby="title-rav4">
+        <div class="card-media">
+          <img src="https://picsum.photos/seed/rav4/800/500" alt="RAV4 Híbrida usada">
+          <div class="badge badge-certified">Usado Certificado</div>
+          <button class="quick-view" aria-label="Vista rápida RAV4">🔍</button>
+        </div>
+        <div class="card-body">
+          <h3 id="title-rav4">RAV4 Híbrida (Usado Cert.)</h3>
+          <p class="muted">Bonificación por entrega de usado</p>
+          <p class="price"><strong>$25,000</strong></p>
+          <div class="card-actions">
+            <button class="btn add-cart">Agregar al carrito</button>
+            <button class="icon small fav" title="Agregar a favoritos">❤</button>
+            <button class="icon small compare" title="Agregar a comparar">≡</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== card: NEXON Concept (extra) ===== -->
+      <article class="car-card" data-id="nexon-c1" data-brand="nexon" data-type="concept" data-price="120000" data-year="2025" aria-labelledby="title-nexon">
+        <div class="card-media">
+          <img src="https://picsum.photos/seed/nexon/800/500" alt="NEXON Concept">
+          <div class="badge badge-concept">Concept</div>
+          <button class="quick-view" aria-label="Vista rápida Nexon">🔍</button>
+        </div>
+        <div class="card-body">
+          <h3 id="title-nexon">NEXON C1 (Concept)</h3>
+          <p class="muted">Prototype eléctrico • Autonomía extendida</p>
+          <p class="price"><strong>$120,000</strong></p>
+          <div class="card-actions">
+            <button class="btn add-cart">Agregar al carrito</button>
+            <button class="icon small fav" title="Agregar a favoritos">❤</button>
+            <button class="icon small compare" title="Agregar a comparar">≡</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Panels: CART / FAVORITES / COMPARE -->
+  <aside id="cart-panel" class="panel" aria-hidden="true" aria-label="Panel de carrito">
+    <h3>Carrito</h3>
+    <div id="cart-items"></div>
+    <div class="panel-footer">
+      <div class="total">Total: $<span id="cart-total">0</span></div>
+      <button id="checkout-btn" class="btn btn-primary">Finalizar Compra</button>
+      <button id="clear-cart" class="btn btn-outline">Vaciar</button>
+    </div>
+  </aside>
+
+  <aside id="fav-panel" class="panel" aria-hidden="true" aria-label="Panel de favoritos">
+    <h3>Favoritos</h3>
+    <div id="fav-items"></div>
+    <div class="panel-footer">
+      <button id="fav-clear" class="btn btn-outline">Limpiar favoritos</button>
+    </div>
+  </aside>
+
+  <aside id="compare-panel" class="panel" aria-hidden="true" aria-label="Panel comparador">
+    <h3>Comparador</h3>
+    <div id="compare-items"></div>
+    <div class="panel-footer">
+      <button id="compare-view" class="btn">Ver comparación</button>
+      <button id="compare-clear" class="btn btn-outline">Limpiar</button>
+    </div>
+  </aside>
+
+  <!-- ============================
+       DESTACADOS / USADOS / FINANCIACIÓN / VIDEO / TESTIMONIOS
+       ============================ -->
+  <section id="destacados" class="container section-grid" aria-label="Destacados del mes">
+    <h2>Autos Destacados del Mes</h2>
+    <div class="highlight-grid">
+      <article class="highlight">
+        <img src="https://picsum.photos/id/1025/600/350" alt="Destacado 1">
+        <h4>Top Performance</h4>
+        <p>GR Supra — edición limitada</p>
+      </article>
+      <article class="highlight">
+        <img src="https://picsum.photos/id/1037/600/350" alt="Destacado 2">
+        <h4>EcoDrive</h4>
+        <p>bZ4X EV — oferta especial</p>
+      </article>
+      <article class="highlight">
+        <img src="https://picsum.photos/id/1043/600/350" alt="Destacado 3">
+        <h4>Family Choice</h4>
+        <p>Corolla Cross Hybrid</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="usados" class="container section-grid" aria-label="Usados certificados">
+    <h2>Usados Certificados</h2>
+    <p class="muted">Inspección completa, historial verificado y garantía.</p>
+    <div class="used-grid">
+      <div class="used-card">
+        <img src="https://picsum.photos/seed/used1/600/350" alt="Usado 1">
+        <h4>RAV4 2020</h4>
+        <p>Certificado • 80,000 km</p>
+        <p class="price">$25,000</p>
+      </div>
+      <div class="used-card">
+        <img src="https://picsum.photos/seed/used2/600/350" alt="Usado 2">
+        <h4>Camry 2019</h4>
+        <p>Certificado • 65,000 km</p>
+        <p class="price">$18,500</p>
+      </div>
+      <div class="used-card">
+        <img src="https://picsum.photos/seed/used3/600/350" alt="Usado 3">
+        <h4>Hilux 2018</h4>
+        <p>Certificado • 120,000 km</p>
+        <p class="price">$32,000</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="financiacion" class="container section-grid" aria-label="Financiación">
+    <h2>Financiación y Promociones</h2>
+    <div class="finance-grid">
+      <div class="finance-card">
+        <h4>Plan Básico</h4>
+        <p>12 cuotas • TNA 9.9%</p>
+      </div>
+      <div class="finance-card">
+        <h4>Plan Premium</h4>
+        <p>24 cuotas • TNA 7.5% • Bonificación por trade-in</p>
+      </div>
+      <div class="finance-card">
+        <h4>Plan 0%</h4>
+        <p>Financiación 0% en modelos seleccionados</p>
+      </div>
+    </div>
+
+    <form id="finance-form" class="finance-form" aria-label="Formulario de financiación">
+      <label>Nombre: <input type="text" required></label>
+      <label>Teléfono / WhatsApp: <input type="tel" required></label>
+      <label>Email: <input type="email" required></label>
+      <label>Plan deseado:
+        <select required>
+          <option value="12">12 cuotas</option>
+          <option value="24">24 cuotas</option>
+          <option value="48">48 cuotas</option>
+        </select>
+      </label>
+      <button type="submit" class="btn btn-primary">Solicitar evaluación</button>
+    </form>
+  </section>
+
+  <section id="video" class="container video-section" aria-label="Video presentación">
+    <h2>Video Presentación</h2>
+    <div class="video-wrapper">
+      <iframe width="100%" height="420" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video NEXON DRIVE" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="faq" class="container section-grid" aria-label="Preguntas frecuentes">
+    <h2>Preguntas Frecuentes</h2>
+    <details>
+      <summary>¿Cómo pruebo un auto?</summary>
+      <p>Reservá tu prueba de manejo desde el botón "Agendar" en la ficha del vehículo o contactanos por WhatsApp.</p>
+    </details>
+    <details>
+      <summary>¿Aceptan autos en parte de pago?</summary>
+      <p>Sí, ofrecemos tasación y bonificación por entrega de usado en modelos seleccionados.</p>
+    </details>
+    <details>
+      <summary>¿Qué incluye la garantía?</summary>
+      <p>Incluye 12 meses de garantía de fábrica y opciones extendidas.</p>
+    </details>
+  </section>
+
+  <section id="sucursales" class="container section-grid" aria-label="Sucursales y mapa">
+    <h2>Nuestras sucursales</h2>
+    <div class="map-contact">
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13133.123456789!2d-58.3816!3d-34.6037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1600000000000"
+          width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="branch-list">
+        <h4>Av. Ficticia 1234 — Ciudad Autos</h4>
+        <p>Tel: +54 11 5678-9876</p>
+        <h4>Sucursal Norte — Ruta 9</h4>
+        <p>Tel: +54 11 4321-0000</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonios" class="container section-grid" aria-label="Testimonios">
+    <h2>Testimonios</h2>
+    <div class="testi-grid">
+      <blockquote>"Excelente servicio, me ayudaron con la financiación y todo fue rápido." — <b>María S.</b></blockquote>
+      <blockquote>"El usado certificado llegó en perfecto estado." — <b>Lucas P.</b></blockquote>
+      <blockquote>"La atención postventa es insuperable." — <b>Franco M.</b></blockquote>
+    </div>
+  </section>
+
+  <section id="newsletter" class="newsletter container" aria-label="Newsletter">
+    <h2>Suscribite y recibí promociones</h2>
+    <form id="newsletter-form" aria-label="Suscripción newsletter">
+      <input id="sub-email" type="email" placeholder="Tu email" required>
+      <button type="submit" class="btn btn-primary">Suscribirme</button>
+      <p class="muted small">Promociones, novedades y eventos exclusivos.</p>
+    </form>
+  </section>
+
+  <!-- FOOTER (preservé tu footer original y lo amplié) -->
+  <footer class="main-footer">
+    <div class="footer-inner container">
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>Dirección: Av. Ficticia 1234, Ciudad Autos</p>
+        <p>Tel: +54 11 5678-9876</p>
+        <p>Email: contacto@nexondrive.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#financiacion">Financiación</a></li>
+          <li><a href="#sucursales">Sucursales</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <p><a href="#" aria-label="Facebook">Facebook</a> • <a href="#" aria-label="Instagram">Instagram</a> • <a href="#" aria-label="Twitter">Twitter</a></p>
+        <div class="certs">
+          <span class="seal">✔️ Usado Cert.</span>
+          <span class="seal">🔒 Compra Segura</span>
+          <span class="seal">🌱 Eco-Friendly</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>Creadores: Gonzalo Chaparro y Gonzalo Fernández • &copy; 2025 NEXON DRIVE Motors</p>
+      <p>Última actualización: 18 de noviembre de 2025</p>
+    </div>
+  </footer>
+
+  <!-- QUICK VIEW / MODAL -->
+  <div id="quick-modal" class="modal" aria-hidden="true" role="dialog" aria-label="Vista rápida">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar">✕</button>
+      <div id="quick-content"></div>
+    </div>
+  </div>
+
+  <!-- ============================
+       SCRIPTS: features client-side (localStorage, search, filters, carousel)
+       ============================ -->
+  <script>
+    (function(){
+      const $ = s => document.querySelector(s);
+      const $$ = s => Array.from(document.querySelectorAll(s));
+
+      // State keys
+      const CART_KEY = 'nd_cart_v1';
+      const FAV_KEY = 'nd_fav_v1';
+      const CMP_KEY = 'nd_cmp_v1';
+
+      // Elements
+      const cartBtn = $('#cart-btn');
+      const favBtn = $('#favorites-btn');
+      const compareBtn = $('#compare-btn');
+      const cartPanel = $('#cart-panel');
+      const favPanel = $('#fav-panel');
+      const cmpPanel = $('#compare-panel');
+      const cartCount = $('#cart-count');
+      const favCount = $('#fav-count');
+      const cmpCount = $('#cmp-count');
+      const cartItemsEl = $('#cart-items');
+      const favItemsEl = $('#fav-items');
+      const compareItemsEl = $('#compare-items');
+      const cartTotalEl = $('#cart-total');
+      const catalogGrid = $('#catalog-grid');
+      const quickModal = $('#quick-modal');
+      const quickContent = $('#quick-content');
+
+      // Load / Save
+      const load = (key) => JSON.parse(localStorage.getItem(key) || '[]');
+      const save = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+
+      let cart = load(CART_KEY);
+      let favs = load(FAV_KEY);
+      let cmp = load(CMP_KEY);
+
+      const refreshBadges = () => {
+        cartCount.textContent = cart.length;
+        favCount.textContent = favs.length;
+        cmpCount.textContent = cmp.length;
+      };
+
+      function renderPanelList(list, container, type) {
+        container.innerHTML = '';
+        if(list.length === 0) {
+          container.innerHTML = '<p class="muted">No hay items.</p>';
+          return;
+        }
+        list.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'panel-item';
+          div.innerHTML = '<strong>'+item.title+'</strong> <span class="muted">$'+item.price+'</span> <button class="remove-item small">Eliminar</button>';
+          div.querySelector('.remove-item').addEventListener('click', ()=> {
+            if(type==='cart') cart = cart.filter(i => i.id !== item.id);
+            if(type==='fav') favs = favs.filter(i => i.id !== item.id);
+            if(type==='cmp') cmp = cmp.filter(i => i.id !== item.id);
+            save(CART_KEY, cart); save(FAV_KEY, favs); save(CMP_KEY, cmp);
+            renderAll();
+          });
+          container.appendChild(div);
+        });
+      }
+
+      function calcTotal() {
+        return cart.reduce((s,i)=>s+Number(i.price),0);
+      }
+
+      function renderAll() {
+        refreshBadges();
+        renderPanelList(cart, cartItemsEl, 'cart');
+        renderPanelList(favs, favItemsEl, 'fav');
+        renderPanelList(cmp, compareItemsEl, 'cmp');
+        cartTotalEl.textContent = calcTotal();
+      }
+
+      // Catalog delegation
+      catalogGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('.car-card');
+        if(!card) return;
+        const id = card.dataset.id;
+        const title = card.querySelector('h3').textContent;
+        let priceText = card.querySelector('.price strong') || card.querySelector('.price');
+        let price = priceText ? priceText.textContent.replace(/[^0-9.]/g,'') : '0';
+
+        if(e.target.classList.contains('add-cart')) {
+          cart.push({id,title,price:Number(price)});
+          save(CART_KEY, cart);
+          renderAll();
+          alert(title + ' agregado al carrito');
+        }
+        if(e.target.classList.contains('fav')) {
+          if(favs.find(i=>i.id===id)){ alert('Ya está en favoritos'); return; }
+          favs.push({id,title,price:Number(price)});
+          save(FAV_KEY, favs);
+          renderAll();
+        }
+        if(e.target.classList.contains('compare')) {
+          if(cmp.find(i=>i.id===id)){ alert('Ya está en el comparador'); return; }
+          if(cmp.length >= 3){ alert('Máximo 3 para comparar'); return; }
+          cmp.push({id,title,price:Number(price)});
+          save(CMP_KEY, cmp);
+          renderAll();
+        }
+        if(e.target.classList.contains('quick-view')) {
+          const img = card.querySelector('img').src;
+          const specs = card.querySelector('.muted').textContent;
+          quickContent.innerHTML = '<img src="'+img+'" alt=""><h3>'+title+'</h3><p>'+specs+'</p><p class="price">$'+price+'</p><button id="q-add" class="btn btn-primary">Agregar al carrito</button>';
+          quickModal.setAttribute('aria-hidden','false'); quickModal.style.display='flex';
+          $('#q-add').addEventListener('click', () => {
+            cart.push({id,title,price:Number(price)}); save(CART_KEY, cart); renderAll();
+            alert(title + ' agregado al carrito');
+          });
+        }
+      });
+
+      // Quick modal close
+      quickModal.addEventListener('click', (ev)=> {
+        if(ev.target === quickModal || ev.target.classList.contains('modal-close')) {
+          quickModal.style.display='none'; quickModal.setAttribute('aria-hidden','true');
+        }
+      });
+
+      // Panels toggles
+      function togglePanel(panel) {
+        [cartPanel, favPanel, cmpPanel].forEach(p => p.classList.remove('open'));
+        panel.classList.toggle('open');
+      }
+      cartBtn.addEventListener('click', ()=> togglePanel(cartPanel));
+      favBtn.addEventListener('click', ()=> togglePanel(favPanel));
+      compareBtn.addEventListener('click', ()=> togglePanel(cmpPanel));
+
+      // Panel actions
+      $('#clear-cart').addEventListener('click', ()=> { if(confirm('Vaciar carrito?')) { cart=[]; save(CART_KEY,cart); renderAll(); }});
+      $('#fav-clear').addEventListener('click', ()=> { if(confirm('Limpiar favoritos?')) { favs=[]; save(FAV_KEY,favs); renderAll(); }});
+      $('#compare-clear').addEventListener('click', ()=> { cmp=[]; save(CMP_KEY,cmp); renderAll(); });
+
+      $('#checkout-btn').addEventListener('click', ()=> {
+        if(cart.length===0) return alert('Carrito vacío');
+        alert('Compra simulada. Total: $' + calcTotal() + '. Gracias por elegir NEXON DRIVE!');
+        cart = []; save(CART_KEY, cart); renderAll();
+      });
+
+      // Filters & search
+      function applyFilters() {
+        const type = $('#filter-type').value;
+        const brand = $('#filter-brand').value;
+        const minP = Number($('#filter-price-min').value || 0);
+        const maxP = Number($('#filter-price-max').value || Infinity);
+        const sort = $('#sort-select').value;
+        let cards = $$('.car-card');
+        cards.forEach(card => {
+          const price = Number(card.dataset.price || 0);
+          const ctype = card.dataset.type || '';
+          const cbrand = card.dataset.brand || '';
+          let show = true;
+          if(type && ctype !== type) show=false;
+          if(brand && cbrand !== brand) show=false;
+          if(price < minP || price > maxP) show=false;
+          card.style.display = show ? 'block' : 'none';
+        });
+        // Sorting
+        const grid = $('#catalog-grid');
+        let visible = $$('.car-card').filter(c=> c.style.display !== 'none');
+        if(sort === 'price-asc') visible.sort((a,b)=>a.dataset.price - b.dataset.price);
+        if(sort === 'price-desc') visible.sort((a,b)=>b.dataset.price - a.dataset.price);
+        if(sort === 'year-desc') visible.sort((a,b)=>b.dataset.year - a.dataset.year);
+        visible.forEach(v => grid.appendChild(v));
+      }
+      $('#apply-filters').addEventListener('click', applyFilters);
+      $('#clear-filters').addEventListener('click', ()=>{
+        $('#filter-type').value=''; $('#filter-brand').value=''; $('#filter-price-min').value=''; $('#filter-price-max').value=''; $('#sort-select').value='relevance';
+        $$('.car-card').forEach(c=> c.style.display='block');
+      });
+
+      // Search
+      $('#search-btn').addEventListener('click', ()=>{
+        const q = $('#global-search').value.trim().toLowerCase();
+        if(!q) { $$('.car-card').forEach(c=> c.style.display='block'); return; }
+        $$('.car-card').forEach(card => {
+          const txt = (card.textContent || '').toLowerCase();
+          card.style.display = txt.includes(q) ? 'block' : 'none';
+        });
+      });
+
+      // Carousel basic
+      (function carouselSetup(){
+        const slides = $$('.carousel .slide');
+        let idx = 0;
+        const show = n => {
+          slides.forEach((s,i)=> s.classList.toggle('active', i===n));
+        };
+        $('.carousel-next').addEventListener('click', ()=> { idx = (idx+1)%slides.length; show(idx); });
+        $('.carousel-prev').addEventListener('click', ()=> { idx = (idx-1+slides.length)%slides.length; show(idx); });
+        setInterval(()=> { idx = (idx+1)%slides.length; show(idx); }, 6000);
+      })();
+
+      // Newsletter
+      $('#newsletter-form').addEventListener('submit', (e)=> {
+        e.preventDefault();
+        alert('Gracias! Te suscribiste con ' + $('#sub-email').value);
+        $('#sub-email').value='';
+      });
+
+      // Finance form
+      $('#finance-form').addEventListener('submit', (e)=> {
+        e.preventDefault();
+        alert('Solicitud enviada. Nuestro equipo te contactará en menos de 24h.');
+        e.target.reset();
+      });
+
+      // Init
+      renderAll();
+    })();
+  </script>
+
+  <!-- Minimal inline styles for required panels in case the CSS file isn't loaded yet -->
+  <style>
+    .panel{position:fixed;right:20px;top:80px;width:320px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.15);padding:14px;border-radius:10px;display:none;z-index:1200}
+    .panel.open{display:block}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:1400}
+    .modal .modal-content{background:#fff;padding:20px;border-radius:10px;max-width:900px;max-height:80vh;overflow:auto}
+  </style>
+</body>
+</html>
